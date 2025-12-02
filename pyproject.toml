@@ -1,0 +1,27 @@
+[project]
+name = "aoc25"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = []
+
+[build-system]
+requires = ["uv_build>=0.9.7,<0.10.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+cli = [
+    "dotenv>=0.9.9",
+    "poethepoet>=0.38.0",
+    "requests>=2.32.5",
+    "rich>=14.2.0",
+    "typer>=0.20.0",
+]
+
+[tool.poe.tasks]
+aoc = "uv run ${POE_ROOT}/aoc_helper.py"
+test1 = { shell = "uv run ${POE_CWD}/part1.py < ${POE_CWD}/test.txt" }
+test2 = { shell = "uv run ${POE_CWD}/part2.py < ${POE_CWD}/test.txt" }
+full1 = { shell = "uv run ${POE_CWD}/part1.py < ${POE_CWD}/full.txt" }
+full2 = { shell = "uv run ${POE_CWD}/part2.py < ${POE_CWD}/full.txt" }
