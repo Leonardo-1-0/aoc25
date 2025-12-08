@@ -20,8 +20,8 @@ def distance(a: Box, b: Box) -> float:
 
 boxes: list[Box] = []
 for line in open(0).readlines():
-    x, y, z = line.strip().split(",")
-    box = Box(int(x), int(y), int(z))
+    x, y, z = map(int, line.strip().split(","))
+    box = Box(x, y, z)
     boxes.append(box)
 
 unsorted_network: dict[tuple[Box, Box], float] = {}
@@ -46,8 +46,7 @@ for i, edge in enumerate(network):
     ]
 
     if not to_connect:
-        circuit: set[Box] = set()
-        circuit = {left, right} | connections[left] | connections[right]
+        circuit: set[Box] = {left, right} | connections[left] | connections[right]
         circuits.append(set(sorted(circuit)))
         continue
 
